@@ -58,3 +58,42 @@ body {
   float: right;
   outline: none;
 }
+
+.todo-item .assign-user {
+  cursor: pointer;
+  float: right;
+  margin: 0 12px;
+  position: relative;
+}
+
+.user-list-container {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: solid 1px lightgray;
+  min-width: 150px;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.user-list {
+  list-style-type: none;
+  padding: 17px 12px;
+  border-bottom: 1px solid #eaeaea;
+  white-space: nowrap;
+}
+
+.user-list:hover {
+  background-color: #cecece;
+}
+
+.assigned-user-logo {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  border: solid 1px lightgray;
+}
