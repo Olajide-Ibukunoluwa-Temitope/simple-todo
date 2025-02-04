@@ -8,6 +8,17 @@ body {
   line-height: 1.4;
   color: #1f1f1f;
 }
+.header-container {
+  padding: 20px 0;
+  line-height: 2em;
+}
+.main-title {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.subtext {
+  font-size: 19px;
+}
 .container {
   max-width: 700px;
   margin: 0 auto;

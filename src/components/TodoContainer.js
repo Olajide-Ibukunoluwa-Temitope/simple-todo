@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import TodosList from "./TodosList";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
@@ -36,19 +36,22 @@ const TodoContainer = () => {
     setIsOpen((prev) => (selectedTask === id ? !prev : true));
   };
 
-  const handleAssignUser = (user, taskId) => {
-    const todosCopy = [...state.todos];
-    const selectedTodo = todosCopy.find((todo) => todo.id === taskId);
+  const handleAssignUser = useCallback(
+    (user, taskId) => {
+      const todosCopy = [...state.todos];
+      const selectedTodo = todosCopy.find((todo) => todo.id === taskId);
 
-    if (selectedTodo) {
-      selectedTodo.user = { id: user.id, name: user.name };
-    }
+      if (selectedTodo) {
+        selectedTodo.user = { id: user.id, name: user.name };
+      }
 
-    setState({
-      todos: todosCopy,
-    });
-    setIsOpen(false);
-  };
+      setState({
+        todos: todosCopy,
+      });
+      setIsOpen(false);
+    },
+    [state.todos]
+  );
 
   const handleClearAssignee = (taskId) => {
     const todosCopy = [...state.todos];

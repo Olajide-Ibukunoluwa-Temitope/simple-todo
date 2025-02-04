@@ -4,13 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 const TodoItem = (props) => {
   const ref = useRef(null);
 
-  // const completedStyle = {
-  //   fontStyle: "italic",
-  //   color: "#d35e0f",
-  //   opacity: 0.4,
-  //   textDecoration: "line-through",
-  // };
-
   const users = [
     {
       id: uuidv4(),
