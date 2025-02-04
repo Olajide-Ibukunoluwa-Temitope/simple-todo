@@ -46,6 +46,12 @@ body {
   padding: 17px 0px;
   border-bottom: 1px solid #eaeaea;
 }
+.todo-item .completed {
+  font-style: italic;
+  color: #d35e0f;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
 .todo-item input {
   margin-right: 15px;
 }

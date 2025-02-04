@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 const TodoItem = (props) => {
   const ref = useRef(null);
 
-  const completedStyle = {
-    fontStyle: "italic",
-    color: "#d35e0f",
-    opacity: 0.4,
-    textDecoration: "line-through",
-  };
+  // const completedStyle = {
+  //   fontStyle: "italic",
+  //   color: "#d35e0f",
+  //   opacity: 0.4,
+  //   textDecoration: "line-through",
+  // };
 
   const users = [
     {
@@ -52,7 +52,7 @@ const TodoItem = (props) => {
         checked={completed}
         onChange={() => props.handleChangeProps(id)}
       />
-      <span style={completed ? completedStyle : null}>{title}</span>
+      <span className={`${completed ? "completed" : null}`}>{title}</span>
 
       <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
 

@@ -29,6 +29,7 @@ const InputTodo = (props) => {
         name="title"
         required
         onChange={onChange}
+        data-test="new-todo"
       />
       <input type="submit" className="input-submit" value="Submit" />
     </form>
