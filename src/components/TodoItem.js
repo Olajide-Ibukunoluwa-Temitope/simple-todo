@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const TodoItem = (props) => {
+  const ref = useRef(null);
+
   const completedStyle = {
     fontStyle: "italic",
     color: "#d35e0f",
@@ -16,7 +18,7 @@ const TodoItem = (props) => {
     },
     {
       id: uuidv4(),
-      name: "Janet Joe",
+      name: "David Joe",
     },
     {
       id: uuidv4(),
@@ -25,7 +27,24 @@ const TodoItem = (props) => {
   ];
 
   const { completed, id, title, user: assignedUser } = props.todo;
-  console.log("selectedTask", props.selectedTask, id);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current) {
+        if (!ref.current.contains(event.target)) {
+          props.setIsOpen(false);
+        }
+      }
+
+      if (!event.target) props.setIsOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, props]);
+
   return (
     <li className="todo-item">
       <input
@@ -36,13 +55,20 @@ const TodoItem = (props) => {
       <span style={completed ? completedStyle : null}>{title}</span>
 
       <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
+
       <div className="assign-user">
         {assignedUser.id ? (
-          <div
-            className="assigned-user-logo"
-            onClick={() => props.handleAssignUserTrigger(id)}
-          >
-            <span>{assignedUser.name[0]}</span>
+          <div className="assigned-user-logo-container">
+            <div
+              className="assigned-user-logo"
+              onClick={() => props.handleAssignUserTrigger(id)}
+            >
+              <span>{assignedUser.name[0]}</span>
+            </div>
+            <i
+              className="ri-close-circle-fill clear-icon"
+              onClick={() => props.handleClearAssignee(id)}
+            ></i>
           </div>
         ) : (
           <i
@@ -52,7 +78,7 @@ const TodoItem = (props) => {
         )}
 
         {props.selectedTask === id && props.isOpen && (
-          <div className="user-list-container">
+          <div ref={ref} className="user-list-container">
             <ul>
               {users.map((user) => {
                 return (

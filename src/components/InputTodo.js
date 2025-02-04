@@ -27,6 +27,7 @@ const InputTodo = (props) => {
         placeholder="Add todo..."
         value={state.title}
         name="title"
+        required
         onChange={onChange}
       />
       <input type="submit" className="input-submit" value="Submit" />

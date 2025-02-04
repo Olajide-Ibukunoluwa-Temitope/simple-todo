@@ -50,6 +50,20 @@ const TodoContainer = () => {
     setIsOpen(false);
   };
 
+  const handleClearAssignee = (taskId) => {
+    const todosCopy = [...state.todos];
+    const selectedTodo = todosCopy.find((todo) => todo.id === taskId);
+
+    if (selectedTodo) {
+      selectedTodo.user = { id: "", name: "" };
+    }
+
+    setState({
+      todos: todosCopy,
+    });
+    setIsOpen(false);
+  };
+
   const handleChange = (id) => {
     setState({
       todos: state.todos.map((todo) => {
@@ -73,10 +87,10 @@ const TodoContainer = () => {
 
   const addTodoItem = (title) => {
     const newTodo = {
-      // id: uuid.v4(),
       id: uuidv4(),
       title: title,
       completed: false,
+      user: { id: "", name: "" },
     };
     setState({
       todos: [...state.todos, newTodo],
@@ -95,6 +109,8 @@ const TodoContainer = () => {
         selectedTask={selectedTask}
         isOpen={isOpen}
         handleAssignUser={handleAssignUser}
+        handleClearAssignee={handleClearAssignee}
+        setIsOpen={setIsOpen}
       />
     </div>
   );

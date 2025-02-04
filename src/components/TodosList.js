@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem";
 
 const TodosList = (props) => {
   return (
-    <div>
+    <ul className="todo-list-container">
       {props.todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -14,9 +14,11 @@ const TodosList = (props) => {
           selectedTask={props.selectedTask}
           isOpen={props.isOpen}
           handleAssignUser={props.handleAssignUser}
+          handleClearAssignee={props.handleClearAssignee}
+          setIsOpen={props.setIsOpen}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 

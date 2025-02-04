@@ -78,22 +78,39 @@ body {
 
 .user-list {
   list-style-type: none;
-  padding: 17px 12px;
+  padding: 12px 12px;
   border-bottom: 1px solid #eaeaea;
   white-space: nowrap;
+  font-size: 14px;
 }
 
 .user-list:hover {
   background-color: #cecece;
 }
 
+.assigned-user-logo-container {
+  position: relative;
+}
+
+.clear-icon {
+  position: absolute;
+  top: -5px;
+  font-size: 12px;
+  color: red;
+  right: -4px;
+}
+
 .assigned-user-logo {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+
   border: solid 1px lightgray;
+}
+
+.assigned-user-logo span {
+  font-size: 12px;
 }
